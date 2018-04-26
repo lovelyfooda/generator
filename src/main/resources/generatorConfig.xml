@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+	<!-- 这个配置可以不用配置，应该是做了自动发现机制 -->
+	<!-- <classPathEntry -->
+	<!-- location="D:\apache-maven-3.0.5\repository\mysql\mysql-connector-java\5.1.42\mysql-connector-java-5.1.42.jar" 
+		/> -->
+
+	<context id="mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+		<property name="xmlFormatter"
+			value="org.mybatis.generator.api.dom.DefaultXmlFormatter" />
+		<!-- 不生成注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- 配置数据库连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.10.73:3306/sportsdb" userId="sportsdb"
+			password="sportsdb" />
+
+		<!-- 生成实体类 -->
+		<javaModelGenerator targetPackage="com.hhly.sns.es.entity"
+			targetProject="aaa" />
+		<!-- 生成 Map 的 XML 文件 -->
+		<sqlMapGenerator targetPackage="com.hhly.sns.es.mapper.mysql"
+			targetProject="aaa" />
+		<!-- 生成 Mapper 接口文件 -->
+		<javaClientGenerator targetPackage="com.hhly.sns.es.mapper"
+			targetProject="aaa" type="XMLMAPPER" />
+
+		<!-- 必须要设置这5项为false否则会生成用于构造复杂的筛选条件的Example类 -->
+		<table tableName="goods_ext" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+		</table>
+
+	</context>
+</generatorConfiguration>
